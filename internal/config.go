@@ -17,15 +17,12 @@ type Config struct {
 
 // Load creates a Config struct from environment variables
 func Load() (*Config, error) {
-	err := godotenv.Load()
-	if err != nil {
-		return nil, err
-	}
+	godotenv.Load()
 
 	cfg := &Config{
 		Port:              os.Getenv("PORT"),
 		SupabaseURL:       os.Getenv("SUPABASE_URL"),
-		SupabaseProjectID: os.Getenv("SUPABASE_PROJECT_ID"), // Load the new variable
+		SupabaseProjectID: os.Getenv("SUPABASE_PROJECT_ID"),
 		SupabaseKey:       os.Getenv("SUPABASE_KEY"),
 		SecretAPIKey:      os.Getenv("SECRET_API_KEY"),
 	}
